@@ -5,10 +5,11 @@ using System.Web;
 
 namespace HackBoard.Models
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
+
             using (var ctx = new Context())
             {
                 User user1 = new User() { Email = "ishan@poop.com" };
