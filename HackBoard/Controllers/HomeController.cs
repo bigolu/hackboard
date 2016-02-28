@@ -18,7 +18,7 @@ namespace HackBoard.Controllers
             return View();
         }
 
-        public int CreateUser(String name, String username, String password, String description,String github, String linkid)
+        public JsonResult createUser(String name, String username, String password, String description,String github, String linkid)
         {
             int id = -1;
             using (var ctx = new Context())
@@ -32,39 +32,71 @@ namespace HackBoard.Controllers
                     Description = description,
                     Github = github,
                     LinkId = linkid
+
                 };
-                id = NewUser.UserId;
+                
                 ctx.Users.Add(NewUser);
                 ctx.SaveChanges();
+                id = NewUser.UserId;
+
 
             }
             
 
-            return id ; //Json(c,JsonRequestBehavior.AllowGet);
+            return Json(id,JsonRequestBehavior.AllowGet);
             //new HackBoard.User { Email = "yodawg"}
         }
-        public void CreateProject(String title, String hackathon_name, int ownerid, String description, int total_people_desired)
+        public JsonResult createProject(String title, String hackathon_name, int ownerid, String description, int total_people_desired)
         {
+            int id = -1;
             using (var ctx = new Context())
             {
+                var user = ctx.Users.Find(ownerid);
+                
+
                 Project NewProject = new Project()
                 {
                     Title = title,
                     Description = description,
                     MaxPeople = total_people_desired,
-
+                    Owner = user,
+                    CurrentPeople = 1,
+                    Hackathon_Name = hackathon_name
+                    
                    
                 };
+                user.OwnedProjects.Add(NewProject);
+                user.JoinedProjects.Add(NewProject);
                 ctx.Projects.Add(NewProject);
                 ctx.SaveChanges();
+                id = user.UserId;
 
             }
+            return Json(id, JsonRequestBehavior.AllowGet);
 
         }
 
-        public void UpdateUser(String name, String username, String password, String description, String github, String linkid)
+        public JsonResult getProjects()
         {
+            List<Project> AllProjects;
+            using (var ctx = new Context())
+            {
+                AllProjects = ctx.Projects.ToList();
+                
+            }
+            return Json(AllProjects, JsonRequestBehavior.AllowGet);
 
+        }
+        public void approvalProject(int userid, int projectid)
+        {
+            using (var ctx = new Context())
+            {
+                var user = ctx.Users.Find(userid);
+                var project = ctx.Projects.Find(projectid);
+
+                user.ProspectiveProjects.Add(project);
+                
+            }
 
         }
     }
