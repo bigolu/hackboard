@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Projects</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#dashboard" data-toggle="tab"> Dashboard
+            </a></li>
+            <li><a data-target="#browse-projects" data-toggle="tab"> Browse Projects </a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="dashboard">
+                <h1 style="color: #F26522;"><strong>My Projects</strong><span class="badge">+</span></h1>
+                    <div id="projects-owned">
+                    <script id="dashboard-project-template" type="text/x-handlebars-template">
+                        <ul class="list-group">
+                        {{#each this}}
+                            <li>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="panel-info">
+                                            <h2>{{hackathon_name}}</h2>
+                                            <p>Description: {{description}}<br />
+                                                Members:
+                                                {{#each members}}
+                                                    <span class="badge">{{name}}</span>
+                                                {{/each}}
+                                                <br />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                        </ul>
+                    </script>
+                    </div>
+
+                    <h1>Joined Projects</h1>
+                        <div id="projects-owned2" class="card-deck-wrapper">
+                                <script id="dashboard2" type="text/x-handlebars-template">
+                                    <ul class="list-group">
+                                    {{#each this}}
+                                        <li>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="panel-info">
+                                                        <h2>{{hackathon_name}}</h2>
+                                                        <p>Description: {{description}}<br />
+                                                        Number of people: <span class="badge">{{number_of_people}}</span><br />
+                                                        Total number of people desired: <span class="badge">{{total_people_desired}}</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                    </ul>
+                                </script>
+                        </div>
+            </div>
+            <div class="tab-pane" id="browse-projects">
+                <script id="browse-project-template" type="text/x-handlebars-template">
+                    <ul class="list-group">
+                    {{#each this}}
+                        <li>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="panel-info">
+                                        <h2><a href="./{{hackathon_name}}.html">{{hackathon_name}}</a></h2>
+                                        <p>Description: {{description}}<br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {{/each}}
+                    </ul>
+                </script>
+            </div>
+        </div>
+
+        <script>
+
+            var data = {
+                projects: [
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    }
+                ]
+            };
+
+            var data2 = {
+                projects: [
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "HackRU",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "MHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "HackNY",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    },
+
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: [
+                            {"name": "Joe", "userId": "533"},
+                            {"name": "Jeff", "userId": "433"},
+                            {"name": "Alex", "userId": "226"}
+                        ],
+                        number_of_people: 3,
+                        total_people_desired: 5,
+                        pending_members: [
+                            {"name": "al", "userId": "3"},
+                            {"name": "tim", "userId": "63"},
+                            {"name": "rrb", "userId": "98"}
+                        ]
+                    }
+                ]
+            };
+            /*
+            var data2 = {
+                projects: [
+                    {
+                        title: "hardware hack #1",
+                        hackathon_name: "BostonHacks",
+                        owner: "567",
+                        description: "stufff",
+                        members: ["joe", "bob", "bob"],
+                        number_of_people: 3,
+                        total_people_desired: 5
+                    },
+                    {
+                        title: "hardware hack #2",
+                        hackathon_name: "PennApps",
+                        owner: "3232234",
+                        description: "stuffff",
+                        members: ["joe", "bob", "bob"],
+                        number_of_people: 3,
+                        total_people_desired: 5
+                    },
+                    {
+                        title: "hardware hack #3",
+                        hackathon_name: "HackRU",
+                        owner: "2332",
+                        description: "stufff",
+                        members: ["joe", "bob", "bob"],
+                        number_of_people: 3,
+                        total_people_desired: 5
+                    },
+                    {
+                        title: "hardware hack #4",
+                        hackathon_name: "HackPSU",
+                        owner: "7867",
+                        description: "stuff and things",
+                        members: ["joe", "bob", "bob"],
+                        number_of_people: 3,
+                        total_people_desired: 5
+                    }
+                ]
+            };
+            */
+            $(document).ready(
+                function()
+                {
+                    var source = $("#dashboard-project-template").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(data.projects);
+                    $("#projects-owned").html(html);
+
+                    var source2 = $("#dashboard2").html();
+                    var template2 = Handlebars.compile(source2);
+                    var html2 = template2(data2.projects);
+                    $("#projects-owned2").html(html2);
+
+                    var source3 = $("#browse-project-template").html();
+                    var template3 = Handlebars.compile(source3);
+                    var html3 = template3(data.projects);
+                    $("#browse-projects").html(html3);
+
+
+
+
+                }
+            );
+
+        </script>
+    </body>
+
+</html>
