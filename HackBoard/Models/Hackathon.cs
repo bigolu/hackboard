@@ -8,14 +8,12 @@ namespace HackBoard
 {
     public class Hackathon
     {
-        public Hackathon()
-        {
-        }
-
+        
+        public int HackathonId { get; set; }
         String HackathonName { get; set; }
         String HackathonDescription { get; set; }
         int HackathonID { get; set; }
-        List<Project> Projects { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
 
 
     }

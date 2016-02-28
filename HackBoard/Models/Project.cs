@@ -8,18 +8,16 @@ namespace HackBoard.Models
 {
     public class Project
     {
-        public Project()
-        {
-        }
-        Hackathon Hackathon { get; set; }
-        List<Project> OwnedProjects { get; set; }
-        List<Project> InterestProjects { get; set; }
-        List<Project> JoinedProjects { get; set; }
-        User Owner;
-        int MaxPeople;
-        int CurrentPeople;
-        List<User> Users { get; set; }
-        
-                    
+
+        public int ProjectId { get; set; }
+        public Hackathon Hackathon { get; set; }
+        public User Owner { get; set; }
+        public int MaxPeople { get; set; }
+        public int CurrentPeople { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public String Title { get; set; }
+        public String Description { get; set; }
+
+
     }
 }

@@ -9,18 +9,19 @@ namespace HackBoard
     public class User
     {
 
-        public User()
-        {
-
-        }
+        public int UserId { get; set; }
         // String UserName { get; set; }
         public String Email { get; set; }
-        public int ID { get; set; }
-        public List<Project> OwnedProjects { get; set; }
-        public List<Project> ProspectiveProjects { get; set; }
-        public List<Project> JoinedProjects { get; set; }
-        public String Blurb { get; set; }
-        public List<Hackathon> JoinedHackathons { get; set; }
+        //public int ID { get; set; }
+        public virtual ICollection<Project> OwnedProjects { get; set; }
+        public virtual ICollection<Project> ProspectiveProjects { get; set; }
+        public virtual ICollection<Project> JoinedProjects { get; set; }
+        public String Description { get; set; }
+        public virtual ICollection<Hackathon> JoinedHackathons { get; set; }
+        public String Github { get; set; }
+        public String LinkId { get; set; }
+        public String Password { get; set; }
+        public String Name { get; set; }
 
 
 
