@@ -84,6 +84,18 @@ namespace HackBoard.Controllers
                 AllProjects = ctx.Projects.ToList();
                 
             }
+            int count = 0;
+            foreach(Project element in AllProjects)
+            {
+                
+                if (element.CurrentPeople==element.MaxPeople)
+                {
+                    AllProjects.RemoveAt(count);
+
+                }
+                count++;
+            }
+
             return Json(AllProjects, JsonRequestBehavior.AllowGet);
 
         }
@@ -95,8 +107,27 @@ namespace HackBoard.Controllers
                 var project = ctx.Projects.Find(projectid);
 
                 user.ProspectiveProjects.Add(project);
-                
+                ctx.SaveChanges();
+
             }
+            return;
+
+        }
+        public void joinProject(int userid, int projectid)
+        {
+            using (var ctx = new Context())
+            {
+                var user = ctx.Users.Find(userid);
+                var project = ctx.Projects.Find(projectid);
+
+                user.JoinedProjects.Add(project);
+                project.CurrentPeople++;
+                project.Users.Add(user);
+                
+                ctx.SaveChanges();
+
+            }
+            return;
 
         }
     }

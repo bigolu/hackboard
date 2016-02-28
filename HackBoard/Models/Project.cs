@@ -13,7 +13,7 @@ namespace HackBoard.Models
         public Hackathon Hackathon { get; set; }
         public User Owner { get; set; }
         public int MaxPeople { get; set; }
-        public int CurrentPeople { get; set; }
+        public int CurrentPeople { get; set; }  
         public  ICollection<User> Users { get; set; }
         public String Title { get; set; }
         public String Description { get; set; }

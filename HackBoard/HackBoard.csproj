@@ -263,6 +263,20 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="source\addProject.html" />
+    <Content Include="source\BostonHacks.html" />
+    <Content Include="source\dual.html" />
+    <Content Include="source\good-back.png" />
+    <Content Include="source\index.html" />
+    <Content Include="source\nah\back.png" />
+    <Content Include="source\nah\logo.png" />
+    <Content Include="source\nah\profile.html" />
+    <Content Include="source\nah\projects.html" />
+    <Content Include="source\nah\us.jpg" />
+    <Content Include="source\prof.html" />
+    <Content Include="source\prof.jpg" />
+    <Content Include="source\project.html" />
+    <Content Include="source\withadd.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
